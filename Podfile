@@ -6,7 +6,8 @@ target 'Yelp-iOS' do
   use_frameworks!
 
   # Pods for Yelp-iOS
-  pod 'AFNetworking', '~> 3.0'
+  pod 'AFNetworking', '~> 2.5'
+  pod 'BDBOAuth1Manager'
 
   target 'Yelp-iOSTests' do
     inherit! :search_paths

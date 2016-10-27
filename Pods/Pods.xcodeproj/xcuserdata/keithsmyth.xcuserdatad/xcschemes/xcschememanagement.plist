@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BDBOAuth1Manager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Yelp-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Yelp-iOSTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Yelp-iOSUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>077D21275B4BE6CE65128ED44F93E4F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4878C70B21CA37D7CB8A476BF986741B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>925EEC85F3E7E05B6D553A3EA0A5E394</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A17FF5206FDD7360018A199B389D9235</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AE6A4AC269D91F7FF73F67FEEEF0FC11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
