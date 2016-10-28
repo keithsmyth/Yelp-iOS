@@ -8,28 +8,42 @@
 
 import UIKit
 
-class BusinessListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BusinessListViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var businessTableView: UITableView!
     
+    var searchController: UISearchController!
     var businesses = [Business]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        navigationItem.titleView = searchController.searchBar
+        definesPresentationContext = true
+        
         businessTableView.dataSource = self
         businessTableView.delegate = self
         businessTableView.estimatedRowHeight = 100
         businessTableView.rowHeight = UITableViewAutomaticDimension
-        
-        Business.search(term: "bakery") { (results: [Business]?, error: Error?) in
-            if results != nil {
-                self.businesses = results!
-                self.businessTableView.reloadData()
-            } else if error != nil {
-                print(error!.localizedDescription)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let term = searchBar.text {
+            Business.search(term: term) { (results: [Business]?, error: Error?) in
+                if results != nil {
+                    self.businesses = results!
+                    self.businessTableView.reloadData()
+                } else if error != nil {
+                    print(error!.localizedDescription)
+                }
             }
         }
+        searchController.isActive = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
