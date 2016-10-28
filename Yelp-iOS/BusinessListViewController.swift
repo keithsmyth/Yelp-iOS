@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessListViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+class BusinessListViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
 
     @IBOutlet weak var businessTableView: UITableView!
     
@@ -33,16 +33,7 @@ class BusinessListViewController: UIViewController, UISearchBarDelegate, UITable
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let term = searchBar.text {
-            Business.search(term: term) { (results: [Business]?, error: Error?) in
-                if results != nil {
-                    self.businesses = results!
-                    self.businessTableView.reloadData()
-                } else if error != nil {
-                    print(error!.localizedDescription)
-                }
-            }
-        }
+        performSearch(term: searchBar.text, filters: Filters.sharedInstance)
         searchController.isActive = false
     }
     
@@ -77,6 +68,51 @@ class BusinessListViewController: UIViewController, UISearchBarDelegate, UITable
         cell.categoriesLabel.text = model.categories
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navController = segue.destination as! UINavigationController
+        let filtersViewController = navController.topViewController as! FiltersViewController
+        filtersViewController.delegate = self
+    }
+    
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: Filters) {
+        performSearch(term: nil, filters: filters)
+    }
+    
+    func performSearch(term: String?, filters: Filters) {
+        
+        var categoryCodes = [String]()
+        for filter in filters.categorySection.filters {
+            if filter.isOn {
+                categoryCodes.append(filter.code as! String)
+            }
+        }
+        
+        let dealFilter = filters.dealSection.filters.first { (f: Filter) -> Bool in
+            return f.isOn
+        }
+        
+        let sortFilter = filters.sortSection.filters.first { (f: Filter) -> Bool in
+            return f.isOn
+        }
+        
+        let distanceFilter = filters.distanceSection.filters.first { (f: Filter) -> Bool in
+            return f.isOn
+        }
+        
+        Business.search(term: term ?? "",
+                        categories: categoryCodes,
+                        deals: dealFilter?.code as? Bool,
+                        sort: sortFilter?.code as? Int,
+                        distance: distanceFilter?.code as? Int) { (results: [Business]?, error: Error?) in
+            if results != nil {
+                self.businesses = results!
+                self.businessTableView.reloadData()
+            } else if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
     }
 }
 

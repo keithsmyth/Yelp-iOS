@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		470A29C11DC1C2D300FA8B2C /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A29C01DC1C2D300FA8B2C /* Business.swift */; };
+		478F50571DC4D7360052255B /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F50561DC4D7360052255B /* Filters.swift */; };
+		47E4D1E31DC32D0B00FEB227 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E4D1E21DC32D0B00FEB227 /* FilterTableViewCell.swift */; };
+		47E4D1E51DC32FE700FEB227 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E4D1E41DC32FE700FEB227 /* FiltersViewController.swift */; };
 		47E892731DC1BDF900A4A966 /* YelpApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E892721DC1BDF900A4A966 /* YelpApi.swift */; };
 		4B40E4A51DBFEB7800E9B1C6 /* BusinessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B40E4A41DBFEB7800E9B1C6 /* BusinessTableViewCell.swift */; };
 		4BEE21751DBFE1870088C3B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE21741DBFE1870088C3B5 /* AppDelegate.swift */; };
@@ -44,6 +47,9 @@
 		102DE2A790FADD92E326A1A9 /* Pods_Yelp_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelp_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1961ADE8354E3A3651924BD2 /* Pods-Yelp-iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelp-iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yelp-iOSUITests/Pods-Yelp-iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		470A29C01DC1C2D300FA8B2C /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		478F50561DC4D7360052255B /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		47E4D1E21DC32D0B00FEB227 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		47E4D1E41DC32FE700FEB227 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		47E892721DC1BDF900A4A966 /* YelpApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpApi.swift; sourceTree = "<group>"; };
 		4B40E4A41DBFEB7800E9B1C6 /* BusinessTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTableViewCell.swift; sourceTree = "<group>"; };
 		4BEE21711DBFE1870088C3B5 /* Yelp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yelp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				470A29C01DC1C2D300FA8B2C /* Business.swift */,
+				478F50561DC4D7360052255B /* Filters.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				4B40E4A41DBFEB7800E9B1C6 /* BusinessTableViewCell.swift */,
+				47E4D1E21DC32D0B00FEB227 /* FilterTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				4BEE21761DBFE1870088C3B5 /* BusinessListViewController.swift */,
+				47E4D1E41DC32FE700FEB227 /* FiltersViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -472,8 +481,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				47E892731DC1BDF900A4A966 /* YelpApi.swift in Sources */,
+				478F50571DC4D7360052255B /* Filters.swift in Sources */,
 				4BEE21771DBFE1870088C3B5 /* BusinessListViewController.swift in Sources */,
+				47E4D1E51DC32FE700FEB227 /* FiltersViewController.swift in Sources */,
 				4BEE21751DBFE1870088C3B5 /* AppDelegate.swift in Sources */,
+				47E4D1E31DC32D0B00FEB227 /* FilterTableViewCell.swift in Sources */,
 				470A29C11DC1C2D300FA8B2C /* Business.swift in Sources */,
 				4B40E4A51DBFEB7800E9B1C6 /* BusinessTableViewCell.swift in Sources */,
 			);

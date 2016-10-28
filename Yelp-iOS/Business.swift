@@ -72,24 +72,41 @@ class Business {
         reviewCount = dict["review_count"] as? NSNumber
     }
     
-    class func search(term: String, completion: @escaping ([Business]?, Error?) -> Void) {
+    class func search(term: String, categories: [String]?, deals: Bool?, sort: Int?, distance: Int?, completion: @escaping ([Business]?, Error?) -> Void) {
         
         // Default the location to San Francisco
-        let params: [String : AnyObject] = ["term": term as AnyObject, "ll": "37.785771,-122.406165" as AnyObject]
+        var params: [String : AnyObject] = ["term": term as AnyObject, "ll": "37.785771,-122.406165" as AnyObject]
         
-        YelpApi.sharedInstance.get("search", parameters: params,
-                                          success: { (operation: AFHTTPRequestOperation, response: Any) in
-                                            if let response = response as? [String: Any] {
-                                                if let dictionaries = response["businesses"] as? [NSDictionary] {
-                                                    var businesses = [Business]()
-                                                    for dict in dictionaries {
-                                                        businesses.append(Business(dict: dict))
-                                                    }
-                                                    completion(businesses, nil)
-                                                }
-                                            }},
-                                          failure: { (operation:AFHTTPRequestOperation?, error: Error) in
-                                            completion(nil, error)
-        })
+        if categories != nil && !categories!.isEmpty {
+            params["category_filter"] = (categories!).joined(separator: ",") as AnyObject?
+        }
+        
+        if deals != nil {
+            params["deals_filter"] = deals! as AnyObject
+        }
+        
+        if sort != nil {
+            params["sort"] = sort! as AnyObject
+        }
+        
+        if distance != nil {
+            params["radius_filter"] = distance! as AnyObject
+        }
+        
+        let yelpApi = YelpApi.sharedInstance;
+        yelpApi.get("search", parameters: params,
+                    success: { (operation: AFHTTPRequestOperation, response: Any) in
+                        if let response = response as? [String: Any] {
+                            if let dictionaries = response["businesses"] as? [NSDictionary] {
+                                var businesses = [Business]()
+                                for dict in dictionaries {
+                                    businesses.append(Business(dict: dict))
+                                }
+                                completion(businesses, nil)
+                            }
+                        }},
+                        failure: { (operation:AFHTTPRequestOperation?, error: Error) in
+                            completion(nil, error)
+                        })
     }
 }
